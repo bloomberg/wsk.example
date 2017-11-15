@@ -1,0 +1,15 @@
+{
+  "rootUrl": "http://bloomberg.github.io/",
+  "slug": "wsk.example",
+  "title": "TK",
+  "seoTitle": "TK",
+  "fbTitle": "TK",
+  "seoDek": "TK",
+  "fbDek": "TK",
+  "seoKeywords": "TK",
+  "twText": "TK",
+  "fbImg": "wsk-example_facebook.png",
+  "twImg": "wsk-example_twitter.png",
+  "twHandle": "@TK",
+  "storyCopy": "<[~ h.import('src/html/story-copy.aml') ]>"
+}

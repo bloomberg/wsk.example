@@ -1,0 +1,23 @@
+  <main>
+
+    <h1>wsk.example</h1>
+
+    <div class="content">
+
+      <div class="intro">
+        <[= h.printGrafs(storyCopy.intro) ]>
+      </div>
+
+      <div class="sections">
+        <div class="section-title">Sections from a child template</div>
+        <div class="sections-container">
+        <[ storyCopy.sections.forEach(section => { ]>
+          <[= h.readTemplate('src/html/_partials/section.partial.html', {section}) ]>
+        <[ }) ]>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/main.pkgd.js"></script>
