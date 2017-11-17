@@ -7,6 +7,6 @@
  */
 
 // Here's an example of loading a module
-import navToggle from './modules/navToggle.js';
+import say from './modules/say.js';
 
-navToggle('sidebar-button');
+say('Hello, world!');
