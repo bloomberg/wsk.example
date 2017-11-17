@@ -1,7 +1,7 @@
 wsk.example
 ===========
 
-> A sample starter project using [wsk](https://github.com/bloomberg/wsk).
+> A sample starter project using [wsk](https://github.com/bloomberg/wsk). View at: https://bloomberg.github.io/wsk.example
 
 ## Table of contents
 
