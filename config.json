@@ -1,5 +1,5 @@
 {
-  "rootUrl": "http://bloomberg.github.io",
+  "rootUrl": "https://bloomberg.github.io",
   "slug": "wsk.example",
   "title": "wsk.example",
   "seoTitle": "wsk.example",
@@ -10,6 +10,6 @@
   "twText": "A sample starter project using the wsk build system.",
   "fbImg": "wsk.gif",
   "twImg": "wsk.gif",
-  "twHandle": "@TK",
+  "twHandle": "@bbgvisualdata",
   "storyCopy": "<[~ h.import('src/html/story-copy.aml') ]>"
 }
