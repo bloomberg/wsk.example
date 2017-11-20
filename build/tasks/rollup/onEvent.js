@@ -37,7 +37,8 @@ function initWatcher (watch, fileConfig) {
       rollupEvents.bundleInitial(event, fileConfig);
       watchList[fileConfig.input].firstRun = false;
     } else {
-      rollupEvents[event.code](event, fileConfig);
+      let evtHandler = rollupEvents[event.code] || rollupEvents['other'];
+      evtHandler(event, fileConfig);
     }
   });
 }
