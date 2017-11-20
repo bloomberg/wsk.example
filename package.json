@@ -1,6 +1,6 @@
 {
   "name": "wsk.example",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A sample starter project using wsk.",
   "main": "package.json",
   "scripts": {
