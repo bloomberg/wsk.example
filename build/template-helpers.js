@@ -29,7 +29,7 @@ function formatLinks (str) {
   return str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (a, b, c) {
     return '<a href="' + c + '" target="_blank" rel="noopener">' + b + '</a>';
   });
-};
+}
 exports.formatLinks = formatLinks;
 
 /* --------------------------------------------

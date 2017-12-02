@@ -1,7 +1,16 @@
 var writeErrorToJs = require('../helpers/writeErrorToJs');
-var printError = require('../helpers/printError.js');
+var cleanupOutPath = require('../helpers/cleanupOutPath');
+var printErrorFrame = require('../helpers/printErrorFrame.js');
+var notify = require('wsk').notify;
 
 module.exports = function (event, fileConfig) {
-  writeErrorToJs(fileConfig.output.file, event.error);
-  printError(event.error);
+  var filePath = cleanupOutPath(event, fileConfig);
+  notify({
+    message: 'Fatal error compiling JS...',
+    value: filePath,
+    display: 'error'
+  });
+  console.error(event.error.message);
+  printErrorFrame(event.error);
+  writeErrorToJs(event.error, filePath);
 };

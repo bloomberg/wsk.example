@@ -17,6 +17,7 @@ var clock = require('../../utils/clock');
 var formatTime = require('../../utils/format-time.js');
 var constructOutPath = require('./helpers/constructOutPath');
 var writeErrorToJs = require('./helpers/writeErrorToJs.js');
+var printErrorFrame = require('./helpers/printErrorFrame.js');
 var notify = require('wsk').notify;
 var c = require('./config.js')({production: true});
 
@@ -70,7 +71,14 @@ glob(c.CONFIG.filesToBundle, {
             });
           });
       }).catch(function (err) {
-        writeErrorToJs(outPath, err);
+        notify({
+          message: 'Error rolling up JS...',
+          value: file,
+          display: 'error'
+        });
+        console.error(err.message);
+        printErrorFrame(err);
+        writeErrorToJs(err, outPath);
       });
     });
   }
