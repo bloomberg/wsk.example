@@ -10,6 +10,12 @@ module.exports = function (event, fileConfig) {
     display: 'error'
   });
   printError(event.error, function () {
-    // process.exit(1);
+    // If there's an error on initial build, the watch doesn't initiate
+    // Hopefully this is fixed in the future
+    // https://github.com/rollup/rollup/issues/1773
+    notify({
+      message: 'Unfortunately, Rollup has failed. Please ctrl-c and run your build again.',
+      display: 'warn'
+    });
   });
 };

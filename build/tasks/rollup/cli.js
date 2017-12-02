@@ -39,8 +39,8 @@ glob(c.CONFIG.filesToBundle, {
 
       rollup.rollup(inConfig).then(function (bundle) {
         var outConfig = Object.assign({}, c.rollupOutConfig, {file: outPath});
+
         bundle.write(outConfig).then(function () {
-          // Make these fns async
           var outMap = outPath + '.map';
           gracefulUnlink(outMap, function (err) {
             if (err) {
