@@ -64,12 +64,23 @@ rm -rf .git && git init
 
 ## What is this project?
 
-This repository contains the code used to generate the [documentation for wsk](http://github.com/bloomberg/wsk). It also serves as an example repository for how to build out a complete wsk project. It uses the following technologies
+This repository contains the code used to generate the [documentation for wsk](http://github.com/bloomberg/wsk). It also serves as an example repository for how to build out a complete wsk project. It uses the following libraries:
 
 * [Underscore.js](https://underscorejs.org) for templating.
 * [Rollup](https://rollupjs.org/) for JavaScript bundling.
 * [Stylus](http://stylus-lang.com/) for CSS.
 * [fs-extra](https://github.com/jprichardson/node-fs-extra) and Node's built-in `fs` for handling static files.
+
+It also comes with a [node-sass](https://github.com/sass/node-sass) task file if you prefer that to Stylus. To switch, change the references to `stylus` in package.json under `build:css` and `dev:css` to `sass`:
+
+* `"build:css": "node build/tasks/stylus/cli.js"` ⇒ `"build:css": "node build/tasks/sass/cli.js"`
+* `"dev:css": "node build/tasks/sass/watch.js"` ⇒ `"dev:css": "node build/tasks/sass/watch.js"`
+
+You can also remove the following Stylus dependencies from package.json:
+
+* stylus
+* rupture
+* autoprefixer-stylus
 
 ## Tasks
 
