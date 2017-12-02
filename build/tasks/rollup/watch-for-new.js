@@ -28,10 +28,11 @@ var watchGroup = [
   }
 ];
 
+// This task takes the longest so run our server when it's done
 watcher.add(watchGroup, (err, watchTree) => {
   if (err) {
     console.error(err);
   } else {
-    require('../browserSync/cli');
+    // require('../browserSync/cli');
   }
 });

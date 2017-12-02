@@ -1,11 +1,7 @@
-var notify = require('wsk').notify;
-var cleanupOutPath = require('../helpers/cleanupOutPath');
+var writeErrorToJs = require('../helpers/writeErrorToJs');
+var printError = require('../helpers/printError.js');
 
 module.exports = function (event, fileConfig) {
-  notify({
-    message: 'Error compiling JS...',
-    value: cleanupOutPath(event, fileConfig),
-    display: 'error',
-    error: event.error || undefined
-  });
+  writeErrorToJs(fileConfig.output.file, event.error);
+  printError(event.error);
 };
