@@ -33,6 +33,6 @@ watcher.add(watchGroup, (err, watchTree) => {
   if (err) {
     console.error(err);
   } else {
-    // require('../browserSync/cli');
+    require('../browserSync/cli');
   }
 });
