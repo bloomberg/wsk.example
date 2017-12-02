@@ -1,6 +1,15 @@
 Changelog
 ===
 
+## 1.0.2
+
+> 2017-12-02
+
+Remove unused dependencies + readme improvements.
+
+* Add info on how to switch from Stylus to Sass and makes that change easier, remove unused dependencies left over from browserify setup and add better mobile / narrow browser style to default page
+  * [d1223fde191b865da62b3b6bb6dfc62503b966a4](https://github.com/bloomberg/wsk.example/commit/d1223fde191b865da62b3b6bb6dfc62503b966a4)
+
 ## 1.0.1
 
 > 2017-11-20
