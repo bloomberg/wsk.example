@@ -7,7 +7,6 @@
  * --------------------------------------------
  */
 var fs = require('fs');
-var io = require('indian-ocean');
 var chalk = require('chalk');
 var rollup = require('rollup');
 var glob = require('glob');
@@ -17,29 +16,32 @@ var formatBytes = require('../../utils/format-bytes.js');
 var clock = require('../../utils/clock');
 var formatTime = require('../../utils/format-time.js');
 var constructOutPath = require('./helpers/constructOutPath');
+var writeErrorToJs = require('./helpers/writeErrorToJs.js');
+var printErrorFrame = require('./helpers/printErrorFrame.js');
 var notify = require('wsk').notify;
-var CONFIG = require('./config.js')({production: true});
+var c = require('./config.js')({production: true});
 
 var start = clock();
 
-glob(CONFIG.filesToBundle, {
-  ignore: CONFIG.ignored
+glob(c.CONFIG.filesToBundle, {
+  ignore: c.CONFIG.ignored
 }, function (err, files) {
   if (err) {
     notify({
-      message: 'Error reading Stylus glob.',
-      value: CONFIG.in.input,
+      message: 'Error reading Rollup glob.',
+      value: c.CONFIG.filesToBundle,
       display: 'error',
       error: err
     });
   } else {
     files.forEach(function (file) {
-      var inConfig = io.extend({}, CONFIG.in, {input: file});
-      var outPath = constructOutPath(file, CONFIG);
+      var inConfig = Object.assign({}, c.rollupInConfig, {input: file});
+      var outPath = constructOutPath(file, c.CONFIG);
+
       rollup.rollup(inConfig).then(function (bundle) {
-        var outConfig = io.extend({}, CONFIG.out, {file: outPath});
+        var outConfig = Object.assign({}, c.rollupOutConfig, {file: outPath});
+
         bundle.write(outConfig).then(function () {
-          // Make these fns async
           var outMap = outPath + '.map';
           gracefulUnlink(outMap, function (err) {
             if (err) {
@@ -60,32 +62,23 @@ glob(CONFIG.filesToBundle, {
             display: 'compile'
           });
         })
-        .catch(function (err) {
-          notify({
-            message: 'Error rolling up JS...',
-            value: outPath,
-            display: 'error',
-            error: err
-          });
-        });
-      }).catch(function (err) {
-        fs.writeFile(outPath, 'console.error("' + err + '")', function (err1) {
-          if (err1) {
+          .catch(function (err) {
             notify({
-              message: 'Error writing file',
-              value: outPath,
-              display: 'error',
-              error: err1
-            });
-          } else {
-            notify({
-              message: 'Error rolling up JS...',
+              message: 'Error writing rollup bundle...',
               value: outPath,
               display: 'error',
               error: err
             });
-          }
+          });
+      }).catch(function (err) {
+        notify({
+          message: 'Error rolling up JS...',
+          value: file,
+          display: 'error'
         });
+        console.error(err.message);
+        printErrorFrame(err);
+        writeErrorToJs(err, outPath);
       });
     });
   }

@@ -7,11 +7,9 @@
  * --------------------------------------------
  */
 
-var _ = require('underscore');
-
 var watch = require('rollup').watch;
 var constructOutPath = require('./helpers/constructOutPath');
-var CONFIG = require('./config.js')({production: false});
+var c = require('./config.js')({production: false});
 
 module.exports = {onEvent};
 
@@ -19,8 +17,8 @@ var rollupEvents = require('./events/index');
 var watchList = {};
 
 function onEvent (eventType, filePath, opts) {
-  var outPath = constructOutPath(filePath, CONFIG);
-  var fileConfig = _.extend({}, CONFIG.in, {output: CONFIG.out}, {chokidar: CONFIG.chokidar});
+  var outPath = constructOutPath(filePath, c.CONFIG);
+  var fileConfig = Object.assign({}, c.rollupInConfig, {output: c.rollupOutConfig}, {watch: c.rollupWatchConfig});
   fileConfig.input = filePath;
   watchList[filePath] = {firstRun: true};
   fileConfig.output.file = outPath;

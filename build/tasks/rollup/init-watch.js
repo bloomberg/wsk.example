@@ -11,16 +11,16 @@ var notify = require('wsk').notify;
 var glob = require('glob');
 var watchNew = require('./onEvent.js');
 
-var CONFIG = require('./config.js')({production: false});
+var c = require('./config.js')({production: false});
 
 // var cache = fs.readFileSync(config.)
 
 // This could be replaced with config exporting an array once this is closed https://github.com/rollup/rollupjs.org/issues/69
-glob(CONFIG.filesToBundle, function (err, files) {
+glob(c.CONFIG.filesToBundle, function (err, files) {
   if (err) {
     notify({
-      message: 'Error reading Stylus glob.',
-      value: CONFIG.in.input,
+      message: 'Error reading Rollup glob.',
+      value: c.CONFIG.filesToBundle,
       display: 'error',
       error: err
     });
