@@ -5,8 +5,10 @@ Changelog
 
 > 2017-12-02
 
-Remove unused dependencies + readme improvements.
+Rollup improvements. Remove unused dependencies + readme improvements.
 
+* Update to rollup 0.52.0. Add much better error notifications and simplified rollup config.
+  * [a4285b7b73d8753471d2b64ef06f185dccdc05bd](https://github.com/bloomberg/wsk.example/commit/a4285b7b73d8753471d2b64ef06f185dccdc05bd)
 * Add info on how to switch from Stylus to Sass and makes that change easier, remove unused dependencies left over from browserify setup and add better mobile / narrow browser style to default page
   * [d1223fde191b865da62b3b6bb6dfc62503b966a4](https://github.com/bloomberg/wsk.example/commit/d1223fde191b865da62b3b6bb6dfc62503b966a4)
 * Update indian-ocean version
