@@ -1,13 +1,14 @@
 'use strict';
 
 var path = require('path');
-// var plugins = [];
+var sassModuleImporter = require('sass-module-importer');
 
-module.exports = {
+var CONFIG = {
   filePath: 'src/css/*.scss', // Specify your SCSS files
-  watchPath: 'src/css/**/*.scss', // Specify your SCSS files to watch
+  watchModules: 'src/css/modules/**/*.scss', // Specify your SCSS files to watch
   outStem: 'public/css/', // Specify your out CSS out file directory
   // use: plugins.map(function (plugin) { return require(plugin).call() }).concat([autoprefixer]),
+  importer: sassModuleImporter(),
   includePaths: [path.resolve('./', 'src/css')], // Where to look for SCSS modules
   buildOptions: {
     compress: true,
@@ -18,3 +19,8 @@ module.exports = {
     sourcemap: true
   }
 };
+
+// The top level watch will be the same as our file paths
+CONFIG.watchTopLevel = CONFIG.filePath;
+
+module.exports = CONFIG;

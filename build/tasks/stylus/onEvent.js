@@ -19,7 +19,7 @@ function onEvent (eventType, filePath, opts) {
   var CONFIG;
   if (!opts || !opts.use) {
     CONFIG = require('./config.js');
-    io.extend(CONFIG, opts);
+    Object.assign(CONFIG, opts);
   } else {
     CONFIG = opts;
   }
