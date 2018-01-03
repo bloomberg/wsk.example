@@ -1,6 +1,17 @@
 Changelog
 ===
 
+## 1.0.3
+
+> 2018-01-03
+
+Rollup + Sass improvements.
+
+* Change the order of plugins so `node-resolve` is first
+  * [3c5cf3db9bab003b61978ccd4acc4f2cccfaf28b](https://github.com/bloomberg/wsk.example/commit/3c5cf3db9bab003b61978ccd4acc4f2cccfaf28b)
+* Change Sass task to handle unlinking and add autoprefixing
+  * [d63f9c932cc13cd9ecfc79a5f875bdcd58b88469](https://github.com/bloomberg/wsk.example/commit/d63f9c932cc13cd9ecfc79a5f875bdcd58b88469)
+
 ## 1.0.2
 
 > 2017-12-02
