@@ -8,23 +8,23 @@ var CONFIG = require('./config.js');
 
 // Load this task file in case we want to delete things
 var argv = require('yargs')
-    .usage('Usage: $0 [options]')
-    .example('$0 --compress --sourcemap')
-    .option('m', {
-      alias: 'sourcemap',
-      describe: 'Create sourcemap',
-      type: 'boolean',
-      default: CONFIG.buildOptions.sourcemap
-    })
-    .option('c', {
-      alias: 'compress',
-      describe: 'Compress CSS output',
-      type: 'boolean',
-      default: CONFIG.buildOptions.compress
-    })
-    .help('h')
-    .alias('h', 'help')
-    .argv;
+  .usage('Usage: $0 [options]')
+  .example('$0 --compress --sourcemap')
+  .option('m', {
+    alias: 'sourcemap',
+    describe: 'Create sourcemap',
+    type: 'boolean',
+    default: CONFIG.buildOptions.sourcemap
+  })
+  .option('c', {
+    alias: 'compress',
+    describe: 'Compress CSS output',
+    type: 'boolean',
+    default: CONFIG.buildOptions.compress
+  })
+  .help('h')
+  .alias('h', 'help')
+  .argv;
 
 CONFIG.sourcemap = argv.m; // Create sourcemap?
 CONFIG.compress = argv.c; // Compress CSS output?

@@ -23,7 +23,7 @@ var rollupWatchConfig = {
 
 var rollupInConfig = {
   input: null,
-  plugins: [commonjs(), nodeResolve(), babel({exclude: 'node_modules/**'})],
+  plugins: [nodeResolve(), commonjs(), babel({exclude: 'node_modules/**'})],
   acorn: {
     allowReserved: true
   },
